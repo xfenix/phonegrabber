@@ -63,7 +63,7 @@ def grab_pages(pages: Sequence) -> Optional[Sequence]:
 
 
 def cli_handler():
-    """Console handler for entrypoint in setup.py
+    """Console handler for entrypoint in setup.py or manual script call
     """
     import argparse
 
