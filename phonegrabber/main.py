@@ -13,17 +13,21 @@ PHONES_RE = re.compile(r'((!|\?|>|\.|,|-|:|\s)\s*(8|\+7)\s*?(|\()(4|8|9)\d{2}(|\
 CLEAN_PHONE_RE = re.compile(r'[^\d+]')
 
 
-async def fetch_and_process_one_page(session: aiohttp.ClientSession, page_url: str) -> set:
+async def fetch_and_process_one_page(session: aiohttp.ClientSession, page_url: str) -> Optional[set]:
     """Download one page and search for phones
     """
-    async with session.get(page_url) as response:
-        logger.info('Processing {}...'.format(page_url))
-        if response.status == 200:
-            page_body = await response.text()
-            return extract_phone_numbers(page_body)
-        else:
-            logger.error('Incorrect server answer')
-            return set()
+    try:
+        async with session.get(page_url) as response:
+            logger.info('Processing {}...'.format(page_url))
+            if response.status == 200:
+                page_body = await response.text()
+                return extract_phone_numbers(page_body)
+            else:
+                logger.error('Incorrect server answer')
+                return None
+    except aiohttp.ClientConnectorError as exc:
+        logger.error('Connection error, trace: {}'.format(exc))
+        return None
 
 
 async def fetch_all_pages(pages: Sequence) -> Optional[set]:
@@ -31,8 +35,8 @@ async def fetch_all_pages(pages: Sequence) -> Optional[set]:
     """
     async with aiohttp.ClientSession() as session:
         results = await asyncio.gather(
-            *[fetch_and_process_one_page(session, page_url) for page_url in pages],
-            return_exceptions=True)
+            *[fetch_and_process_one_page(session, page_url) for page_url in pages], return_exceptions=True)
+        results = filter(lambda x: type(x) == set, results)
         return set.union(*results)
 
 
