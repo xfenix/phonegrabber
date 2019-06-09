@@ -9,7 +9,7 @@ import aiohttp
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('phonegrabber')
 
-PHONES_RE = re.compile(r'((!|\?|>|\.|\s)\s*(8|\+7)\s*?(|\()(4|8|9)\d{2}(|\))\s*?\d{3}(-|\s*?|)\d{2}(-|\s*?|)\d{2})')
+PHONES_RE = re.compile(r'((!|\?|>|\.|,|-|:|\s)\s*(8|\+7)\s*?(|\()(4|8|9)\d{2}(|\))\s*?\d{3}(-|\s*?|)\d{2}(-|\s*?|)\d{2})')
 CLEAN_PHONE_RE = re.compile(r'[^\d+]')
 
 
