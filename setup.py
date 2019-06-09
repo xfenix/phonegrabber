@@ -7,6 +7,12 @@ setup(
     author='Anikin Denis',
     author_email='ad@xfenix.ru',
     packages=find_packages(),
+    setup_requires=[
+        'pytest-runner',
+    ],
+    tests_require=[
+        'pytest',
+    ],
     install_requires = [
         'aiohttp==3.5.4',
         'aiodns==2.0.0',

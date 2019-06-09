@@ -11,3 +11,6 @@ This simple cli/lib package can grab phones from various web pages
     * `from phonegrabber.main import grab_pages` and use raw function
 * OR
     * Run `python phonegrabber/main.py page_url [page_url ...]`
+
+## Testing
+* Run `python setup.py test`
