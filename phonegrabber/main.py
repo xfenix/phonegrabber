@@ -13,7 +13,7 @@ PHONES_RE = re.compile(r'((!|\?|>|\.|\s)\s*(8|\+7)\s*?(|\()(4|8|9)\d{2}(|\))\s*?
 CLEAN_PHONE_RE = re.compile(r'[^\d+]')
 
 
-async def fetch_and_process_one_page(session: aiohttp.ClientSession, page_url: str) -> Optional[set]:
+async def fetch_and_process_one_page(session: aiohttp.ClientSession, page_url: str) -> set:
     """Download one page and search for phones
     """
     async with session.get(page_url) as response:
@@ -23,7 +23,7 @@ async def fetch_and_process_one_page(session: aiohttp.ClientSession, page_url: s
             return extract_phone_numbers(page_body)
         else:
             logger.error('Incorrect server answer')
-            return None
+            return set()
 
 
 async def fetch_all_pages(pages: Sequence) -> Optional[set]:
