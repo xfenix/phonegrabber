@@ -5,7 +5,6 @@ import re
 import typing
 
 import aiohttp
-import halo
 
 from phonegrabber import helpers
 

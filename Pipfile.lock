@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "fa007b1e6aade30a1d4357192618a45eb5d35234029bfc4cd3ac122c26620986"
+            "sha256": "4f7bec09df8ca4fa9af36b8573825dde839e3393f4224f0864f6d28b6e63948d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -103,34 +103,12 @@
             ],
             "version": "==7.1.2"
         },
-        "colorama": {
-            "hashes": [
-                "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff",
-                "sha256:e96da0d330793e2cb9485e9ddfd918d456036c7149416295932478192f4436a1"
-            ],
-            "version": "==0.4.3"
-        },
-        "halo": {
-            "hashes": [
-                "sha256:78750d4778488b79b12104f3a966259579df6b42eec0d7736b3125bfc4c01b10",
-                "sha256:ad1fb4d7e29fe846d323bf4a8bf9e65fddcb24c10258c13e964cab13278f9568"
-            ],
-            "index": "pypi",
-            "version": "==0.0.30"
-        },
         "idna": {
             "hashes": [
                 "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6",
                 "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"
             ],
             "version": "==2.10"
-        },
-        "log-symbols": {
-            "hashes": [
-                "sha256:4952106ff8b605ab7d5081dd2c7e6ca7374584eff7086f499c06edd1ce56dcca",
-                "sha256:cf0bbc6fe1a8e53f0d174a716bc625c4f87043cc21eb55dd8a740cfe22680556"
-            ],
-            "version": "==0.0.14"
         },
         "multidict": {
             "hashes": [
@@ -194,26 +172,6 @@
                 "sha256:7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"
             ],
             "version": "==2.20"
-        },
-        "six": {
-            "hashes": [
-                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
-                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
-            ],
-            "version": "==1.15.0"
-        },
-        "spinners": {
-            "hashes": [
-                "sha256:1eb6aeb4781d72ab42ed8a01dcf20f3002bf50740d7154d12fb8c9769bf9e27f",
-                "sha256:2fa30d0b72c9650ad12bbe031c9943b8d441e41b4f5602b0ec977a19f3290e98"
-            ],
-            "version": "==0.0.24"
-        },
-        "termcolor": {
-            "hashes": [
-                "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"
-            ],
-            "version": "==1.1.0"
         },
         "typer": {
             "hashes": [
