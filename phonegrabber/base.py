@@ -5,10 +5,12 @@ import re
 import typing
 
 import aiohttp
+import halo
+
+from phonegrabber import helpers
 
 
-logging.basicConfig(level=logging.INFO)
-LOGGER: logging.Logger = logging.getLogger(__name__)
+LOGGER: logging.Logger = helpers.setup_logger("phonegrabber")
 PHONES_RE: re.Pattern = re.compile(
     r"((!|\?|>|\.|,|-|:|\s)\s*(8|\+7)\s*?(|\()(4|8|9)\d{2}(|\))\s*?\d{3}(-|\s*?|)\d{2}(-|\s*?|)\d{2})"
 )
@@ -81,25 +83,16 @@ def grab_pages(pages: typing.Sequence) -> typing.Optional[typing.Sequence]:
     if len(bad_urls) > 0:
         LOGGER.info("Bad urls are skipped: {}".format(bad_urls))
     if len(good_urls) > 0:
+        LOGGER.info("Loading urls...")
         return asyncio.run(fetch_all_pages(good_urls))
     else:
         LOGGER.error("There is no good pages urls")
 
 
-def cli_handler():
+def cli_handler(pages_urls_list: typing.List[str]) -> None:
     """Console handler for entrypoint in setup.py or manual script call."""
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Process urls list and returns phones in 8KKKNNNNNNN format")
-    parser.add_argument("pages", metavar="page_url", type=str, nargs="+", help="an url for the grabber")
-    parsed_args = parser.parse_args()
-
-    results = grab_pages(parsed_args.pages)
+    results = grab_pages(pages_urls_list)
     if results:
         LOGGER.info("All done. Results here: {}".format(results))
     else:
         LOGGER.error("There is no results from parser")
-
-
-if __name__ == "__main__":
-    cli_handler()

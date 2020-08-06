@@ -10,6 +10,8 @@ pytest-cov = "*"
 [packages]
 aiohttp = "*"
 aiodns = "*"
+typer = "*"
+halo = "*"
 
 [requires]
 python_version = "3.8"
